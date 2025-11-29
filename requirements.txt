@@ -4,6 +4,8 @@ httpx
 pydantic
 twilio
 dotenv
+google-genai
 
 # If using agno (custom package), add it below. If not available on PyPI, remove or install manually.
 agno
+
