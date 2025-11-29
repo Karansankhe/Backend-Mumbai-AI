@@ -1,0 +1,9 @@
+streamlit
+requests
+httpx
+pydantic
+twilio
+dotenv
+
+# If using agno (custom package), add it below. If not available on PyPI, remove or install manually.
+agno
