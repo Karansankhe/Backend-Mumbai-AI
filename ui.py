@@ -1,6 +1,6 @@
 import streamlit as st
 from health_recommendation_agent import UserInput
-from main import analyze_conditions, get_api_keys, get_notification_config
+from main import analyze_conditions, get_api_keys
 
 COLORS = {
   "primary": "#2B4A7A",      
@@ -55,14 +55,13 @@ if submitted:
         planned_activity=planned_activity
     )
     API_KEYS = get_api_keys()
-    NOTIFICATION_CONFIG = get_notification_config()
     recommendations, news_summary, hospital_plan, alert_needed, alert_level, reason = analyze_conditions(
         user_input=user_input,
         api_keys=API_KEYS,
         healthcare_api_data={},
         epidemic_signal=None,
         resource_status=None,
-        notification_config=NOTIFICATION_CONFIG
+        notification_config={}
     )
     st.subheader("📰 Recent Pollution News")
     st.markdown(news_summary)
@@ -99,5 +98,4 @@ if submitted:
     # Download button with detailed agentic report
     output_text = f"Agentic AI Hospital Surge Management Report\n\nLocation: {city}, {state}, {country}\nPlanned Activity: {planned_activity}\nMedical Conditions: {medical_conditions or 'None'}\n\n---\nRecent Pollution News:\n{news_summary}\n\nHealth Recommendations:\n{recommendations}\n\nHospital Planning Actions:\n{hospital_plan}\n\nAlert Status: {'SMS Sent' if alert_needed else 'No Alert'}\nAlert Level: {alert_level.value.upper() if alert_needed else 'N/A'}\nReason: {reason}\n\n---\nFeedback: {feedback}\nComments: {comments}"
     st.download_button("Download Detailed Report", output_text, file_name="hospital_surge_agentic_report.txt")
-
 
