@@ -70,11 +70,25 @@ if submitted:
     st.markdown(recommendations)
     st.subheader("🏥 Hospital Planning Actions")
     st.markdown(hospital_plan)
-    # SMS Alert status
-    if alert_needed:
-        st.success(f"🚨 SMS Alert Sent! Level: {alert_level.value.upper()} | Reason: {reason}")
+    # SMS notification UI prompt
+    st.markdown("---")
+    st.subheader("📲 Do you want to send SMS notification?")
+    send_sms = st.radio("Send SMS notification?", ["Yes", "No"], index=1)
+    sms_error = None
+    if send_sms == "Yes":
+        # Simulate SMS sending logic here. Replace with actual SMS sending code as needed.
+        try:
+            # If alert_needed is True, simulate SMS sending
+            if alert_needed:
+                # Simulate success (replace with actual SMS sending logic)
+                st.success(f"🚨 SMS Alert Sent! Level: {alert_level.value.upper()} | Reason: {reason}")
+            else:
+                st.info("No SMS alert needed based on current assessment.")
+        except Exception as e:
+            sms_error = str(e)
+            st.error(f"❌ Error sending SMS: {sms_error}")
     else:
-        st.info("No SMS alert needed based on current assessment.")
+        st.info("SMS notification not sent.")
     # Satisfaction feedback
     st.markdown("---")
     st.subheader("📊 Feedback & Satisfaction Survey")
@@ -85,3 +99,5 @@ if submitted:
     # Download button with detailed agentic report
     output_text = f"Agentic AI Hospital Surge Management Report\n\nLocation: {city}, {state}, {country}\nPlanned Activity: {planned_activity}\nMedical Conditions: {medical_conditions or 'None'}\n\n---\nRecent Pollution News:\n{news_summary}\n\nHealth Recommendations:\n{recommendations}\n\nHospital Planning Actions:\n{hospital_plan}\n\nAlert Status: {'SMS Sent' if alert_needed else 'No Alert'}\nAlert Level: {alert_level.value.upper() if alert_needed else 'N/A'}\nReason: {reason}\n\n---\nFeedback: {feedback}\nComments: {comments}"
     st.download_button("Download Detailed Report", output_text, file_name="hospital_surge_agentic_report.txt")
+
+
