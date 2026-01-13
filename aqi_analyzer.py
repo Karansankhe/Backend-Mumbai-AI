@@ -2,8 +2,7 @@ from typing import Dict
 import requests
 from datetime import datetime
 
-class AQIAnalyzer:
-    """Fetch AQI and weather data using OpenWeatherMap API"""
+class 
     def __init__(self, api_key: str) -> None:
         self.api_key = api_key
         self.base_geo_url = "http://api.openweathermap.org/geo/1.0/direct"
@@ -65,3 +64,4 @@ class AQIAnalyzer:
     def _get_aqi_category(self, aqi: int) -> str:
         categories = {1: "Good", 2: "Fair", 3: "Moderate", 4: "Poor", 5: "Very Poor"}
         return categories.get(aqi, "Unknown")
+
