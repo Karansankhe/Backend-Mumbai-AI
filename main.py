@@ -6,7 +6,7 @@ from planning_agent import PlanningAgent
 from threshold_agent import ThresholdAgent
 
 def get_api_keys():
-    # Replace the following with actual logic to retrieve API key
+    # Replace the following with actual logic to
     return {
         'openweathermap': os.getenv("OPENWEATHERMAP_KEY"),
         'serper': os.getenv("SERPER_KEY"),
