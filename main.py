@@ -1,7 +1,7 @@
 import os
 from aqi_analyzer import AQIAnalyer
 from pollution_news_agent import PollutionNewsAgent, NewsArticle
-from health_recommendation_agent import HealthRecommendationAgent, UserInput
+from health_recommendation_agent import HealthRecommendationAgent, UserInpu
 from planning_agent import PlanningAgent
 from threshold_agent import ThresholdAgent
 
